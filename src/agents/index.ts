@@ -21,6 +21,7 @@ export interface AgentDefinition {
   description: string;
   model: string;
   prompt: string;
+  tools: string[];
   outputSchema?: Record<string, unknown>;
 }
 
@@ -32,6 +33,7 @@ export const codeQualityAnalyzer: AgentDefinition = {
   name: 'code-quality-analyzer',
   description: 'Analyzes code for security vulnerabilities, performance issues, and maintainability concerns',
   model: 'claude-opus-4-5-20251101',
+  tools: ['Read', 'Grep', 'Glob', 'Skill'],
   prompt: CODE_QUALITY_ANALYZER_PROMPT,
   outputSchema: CodeQualityResultJSONSchema
 };
@@ -44,6 +46,7 @@ export const testCoverageAnalyzer: AgentDefinition = {
   name: 'test-coverage-analyzer',
   description: 'Analyzes test coverage and identifies untested code paths and gaps',
   model: 'claude-opus-4-5-20251101',
+  tools: ['Read', 'Grep', 'Glob', 'Skill'],
   prompt: TEST_COVERAGE_ANALYZER_PROMPT,
   outputSchema: TestCoverageResultJSONSchema
 };
@@ -56,6 +59,7 @@ export const refactoringSuggester: AgentDefinition = {
   name: 'refactoring-suggester',
   description: 'Suggests code modernization, design improvements, and refactoring opportunities',
   model: 'claude-opus-4-5-20251101',
+  tools: ['Read', 'Grep', 'Glob', 'Skill'],
   prompt: REFACTORING_SUGGESTER_PROMPT,
   outputSchema: RefactoringSuggestionJSONSchema
 };
